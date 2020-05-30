@@ -8,13 +8,20 @@ def translate_me(mytext):
     params = {
         'key': KEY,
         'text': mytext,
-        'lang': 'ru-fr'
+        'lang': 'en-ru'
     }
     response = requests.get(URL, params=params)
     return response.json()
 
 
-json = translate_me('Привет, друг!')
+# далее модуль который я вставил для открытия файла
+with open('Translate_file_en-ru.txt', 'r+') as f:
+    Translate_text = f.read()
+
+json = translate_me(Translate_text)
 print(json['text'])
 print(' '.join(json['text']))
 
+#json = translate_me('Привет, друг!')
+#print(json['text'])
+#print(' '.join(json['text']))
